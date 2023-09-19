@@ -62,3 +62,13 @@ Default GroupId to Release Name but allow it to be overridden
 {{- .Release.Name -}}
 {{- end -}}
 {{- end -}}
+
+{{- define "containerSecurityContext" -}}
+securityContext:
+{{- $tp := typeOf .Values.containerSecurityContext }}
+{{- if eq $tp "string" }}
+{{- tpl .Values.containerSecurityContext . | nindent 12 }}
+{{- else }}
+{{- toYaml .Values.containerSecurityContext | nindent 12 }}
+{{- end }}
+{{- end -}}

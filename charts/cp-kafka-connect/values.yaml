@@ -54,6 +54,8 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
+containerSecurityContext: {}
+
 ## Custom pod annotations
 podAnnotations: {}
 

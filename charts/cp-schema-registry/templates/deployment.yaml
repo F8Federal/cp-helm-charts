@@ -60,6 +60,7 @@ spec:
           - containerPort: {{ .Values.prometheus.jmx.port }}
           resources:
 {{ toYaml .Values.prometheus.jmx.resources | indent 12 }}
+          {{ template "containerSecurityContext" . }}
           volumeMounts:
           - name: jmx-config
             mountPath: /etc/jmx-schema-registry
@@ -77,6 +78,7 @@ spec:
             {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          {{ template "containerSecurityContext" . }}
           env:
           - name: SCHEMA_REGISTRY_HOST_NAME
             valueFrom:
