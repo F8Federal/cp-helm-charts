@@ -33,6 +33,11 @@ spec:
       {{- end }}
       {{- end }}
     spec:
+      {{- with .Values.serviceAccount }}
+      {{- if .name }}
+      serviceAccountName: "{{ .name }}"
+      {{- end }}
+      {{- end }}
       securityContext:
       {{- if .Values.securityContext }}
 {{ toYaml .Values.securityContext | indent 8 }}

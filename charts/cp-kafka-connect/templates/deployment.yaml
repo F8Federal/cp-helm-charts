@@ -33,6 +33,11 @@ spec:
       {{- end }}
       {{- end }}
     spec:
+      {{- with .Values.serviceAccount }}
+      {{- if .name }}
+      serviceAccountName: "{{ .name }}"
+      {{- end }}
+      {{- end }}
       {{- if .Values.initContainers }}
       initContainers:
 {{ toYaml .Values.initContainers | indent 8 }}
