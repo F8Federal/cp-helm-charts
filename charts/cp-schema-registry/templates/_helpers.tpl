@@ -72,3 +72,13 @@ securityContext:
 {{- toYaml .Values.containerSecurityContext | nindent 12 }}
 {{- end }}
 {{- end -}}
+
+{{- define "prometheusContainerSecurityContext" -}}
+securityContext:
+{{- $tp := typeOf .Values.prometheus.jmx.containerSecurityContext }}
+{{- if eq $tp "string" }}
+{{- tpl .Values.prometheus.jmx.containerSecurityContext . | nindent 12 }}
+{{- else }}
+{{- toYaml .Values.prometheus.jmx.containerSecurityContext | nindent 12 }}
+{{- end }}
+{{- end -}}

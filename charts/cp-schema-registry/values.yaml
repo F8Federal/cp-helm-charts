@@ -101,5 +101,7 @@ prometheus:
 
     resources: {}
 
+    containerSecurityContext: {}
+
 serviceAccount:
   name:

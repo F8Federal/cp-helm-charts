@@ -61,7 +61,7 @@ spec:
           - containerPort: {{ .Values.prometheus.jmx.port }}
           resources:
 {{ toYaml .Values.prometheus.jmx.resources | indent 12 }}
-          {{ template "containerSecurityContext" . }}
+          {{ template "prometheusContainerSecurityContext" . }}
           volumeMounts:
           - name: jmx-config
             mountPath: /etc/jmx-kafka-connect
